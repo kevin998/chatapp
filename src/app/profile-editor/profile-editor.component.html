@@ -1,0 +1,40 @@
+<div class="py-10 flex">
+  <p class="text-3xl font-sans-serif mx-5 w-2/4 flex-auto">Simple Chat Application</p>
+  <button type="button" (click)="addPerson()"
+    class="mr-5 p-3 rounded-full bg-violet-700 flex-none text-white shadow shadow-black">+ ADD NEW PERSON</button>
+</div>
+<div class="mx-5 border-t-2 border-slate-400"></div>
+
+<div class="flex max-h-[calc(100vh-160px)] mb-200">
+  <div class="w-3/5 flex flex-col flex-wrap">
+    <form [formGroup]="profileForm" *ngFor="let person of persons.controls; let i=index">
+
+      <!--<label for="person">Person 1: </label>
+    <input id="person" type="text" formControlName="person">
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>-->
+
+      <div formArrayName="persons">
+
+
+
+        <div  class=" min-h-0 ml-5 max-w-xs max-h-[400px] mb-20 mt-5">
+          <fieldset class="border-2">
+            <legend class="ml-5 text-xs text-zinc-600">Person {{i+1}}: </legend>
+            <textarea #message id="Person-{{ i }}" type="text" [formControlName]="i"
+              placeholder="Enter your message here..."
+              class="border-none outline-none overflow-auto resize-none ml-5 h-[120px]"></textarea>
+          </fieldset>
+          <button type="submit" (click)="sendMessage(i,message.value,message)" [disabled]="!message.value"
+            class="btn float-right bg-teal-400 text-black mt-5">> Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="w-2/5   p-5 mr-5">
+    
+    <p>Chat Window</p>
+    <div class="shadow-xl flex-1 h-[calc(100vh-200px)]">
+    <app-chat-window></app-chat-window>
+  </div>
+  </div>
+</div>

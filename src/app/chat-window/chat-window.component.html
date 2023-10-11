@@ -1,0 +1,25 @@
+<!--
+<mat-list [matList]="listPersons">
+
+
+    <div *ngFor="let person of listPersons.mat-list-item; let i=index">
+        <span matListItemTitle for="person-{{ i }}">Person {{i+1}}: </span>
+        <input id="person-{{ i }}" type="text"> 
+    </div> -->
+
+<div class="flex flex-col h-full ">
+<div class="h-min flex-1 grow h-full">
+<mat-list>
+    <div *ngFor="let item of chatWindow">
+    <mat-list-item>
+            <mat-icon matListItemIcon>bookmark</mat-icon>
+            <span matListItemTitle>{{item.person}}</span>
+            <span matListItemLine>{{item.message}}</span>
+    </mat-list-item> 
+
+    <div class="mx-5 border-t-2 border-slate-100 ml-[72px]"></div>
+</div>
+</mat-list>
+</div>
+<button type="button" (click)="clearChat()" class="btn flex-none self-end">× CLEAR CHAT WINDOW</button>
+</div>
